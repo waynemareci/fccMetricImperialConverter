@@ -35,13 +35,50 @@ suite('Unit Tests', function () {
     assert.strictEqual(convertHandler.getUnit('1kg'), 'kg')
   })
   test('convertHandler should correctly return an error for an invalid input unit.', () => {
-    assert.strictEqual(convertHandler.getUnit('money'), 'invalid unit');
-  }); 
+    assert.strictEqual(convertHandler.getUnit('money'), 'invalid unit')
+  })
   test('convertHandler should return the correct return unit for each valid input unit.', () => {
-    assert.strictEqual(convertHandler.getReturnUnit('gal'), 'L');
-    assert.strictEqual(convertHandler.getReturnUnit('L'), 'gal');
-    assert.strictEqual(convertHandler.getReturnUnit('mi'), 'km');
-    assert.strictEqual(convertHandler.getReturnUnit('km'), 'mi');
-    assert.strictEqual(convertHandler.getReturnUnit('lbs'), 'kg');
-    assert.strictEqual(convertHandler.getReturnUnit('kg'), 'lbs');
+    assert.strictEqual(convertHandler.getReturnUnit('gal'), 'L')
+    assert.strictEqual(convertHandler.getReturnUnit('L'), 'gal')
+    assert.strictEqual(convertHandler.getReturnUnit('mi'), 'km')
+    assert.strictEqual(convertHandler.getReturnUnit('km'), 'mi')
+    assert.strictEqual(convertHandler.getReturnUnit('lbs'), 'kg')
+    assert.strictEqual(convertHandler.getReturnUnit('kg'), 'lbs')
+  })
+  test('convertHandler should correctly return the spelled-out string unit for each valid input unit', () => {
+    assert.strictEqual(convertHandler.spellOutUnit('gal'), 'gallons')
+    assert.strictEqual(convertHandler.spellOutUnit('L'), 'liters')
+    assert.strictEqual(convertHandler.spellOutUnit('mi'), 'miles')
+    assert.strictEqual(convertHandler.spellOutUnit('km'), 'kilometers')
+    assert.strictEqual(convertHandler.spellOutUnit('lbs'), 'pounds')
+    assert.strictEqual(convertHandler.spellOutUnit('kg'), 'kilograms')
+    assert.strictEqual(
+      convertHandler.spellOutUnit('invalid unit'),
+      'invalid unit'
+    )
+  })
+  test('convertHandler should correctly convert gal to L', () => {
+    assert.strictEqual(convertHandler.convert(1, 'gal'), 3.78541)
+  })
+  test('convertHandler should correctly convert L to gal', () => {
+    assert.strictEqual(convertHandler.convert(1, 'L'), (1/3.78541).toFixed(5))
+  })
+  test('convertHandler should correctly convert mi to km', () => {
+    assert.strictEqual(convertHandler.convert(1, 'mi'), 1.60934)
+  })
+  test('convertHandler should correctly convert km to mi', () => {
+    assert.strictEqual(
+      convertHandler.convert(1, 'km'),
+      (1 / 1.60934).toFixed(5)
+    )
+  })
+  test('convertHandler should correctly convert lbs to kg', () => {
+    assert.strictEqual(convertHandler.convert(1, 'lbs'), 0.453592)
+  })
+  test('convertHandler should correctly convert kg to lbs', () => {
+    assert.strictEqual(
+      convertHandler.convert(1, 'kg'),
+      (1 / 0.453592).toFixed(5)
+    )
+  })
 })
