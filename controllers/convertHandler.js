@@ -65,15 +65,15 @@ function ConvertHandler () {
       case 'gal' :
         return initNum * galToL;
       case 'L':
-        return (initNum / galToL).toFixed(5);
+        return parseFloat((initNum / galToL).toFixed(5));
       case 'mi':
         return initNum * miToKm;
       case 'km':
-        return (initNum / miToKm).toFixed(5);
+        return parseFloat((initNum / miToKm).toFixed(5));
       case 'lbs':
-        return initNum * lbsToKg;
+        return parseFloat((initNum * lbsToKg).toFixed(5));
       case 'kg':
-        return (initNum / lbsToKg).toFixed(5); 
+        return parseFloat((initNum / lbsToKg).toFixed(5));
       default:
         return "bad unit input to convert"
     }

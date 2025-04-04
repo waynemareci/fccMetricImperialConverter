@@ -61,7 +61,7 @@ suite('Unit Tests', function () {
     assert.strictEqual(convertHandler.convert(1, 'gal'), 3.78541)
   })
   test('convertHandler should correctly convert L to gal', () => {
-    assert.strictEqual(convertHandler.convert(1, 'L'), (1/3.78541).toFixed(5))
+    assert.strictEqual(convertHandler.convert(1, 'L'), parseFloat((1/3.78541).toFixed(5)))
   })
   test('convertHandler should correctly convert mi to km', () => {
     assert.strictEqual(convertHandler.convert(1, 'mi'), 1.60934)
@@ -69,16 +69,16 @@ suite('Unit Tests', function () {
   test('convertHandler should correctly convert km to mi', () => {
     assert.strictEqual(
       convertHandler.convert(1, 'km'),
-      (1 / 1.60934).toFixed(5)
+      parseFloat((1 / 1.60934).toFixed(5))
     )
   })
   test('convertHandler should correctly convert lbs to kg', () => {
-    assert.strictEqual(convertHandler.convert(1, 'lbs'), 0.453592)
+    assert.strictEqual(convertHandler.convert(1, 'lbs'), 0.45359)
   })
   test('convertHandler should correctly convert kg to lbs', () => {
     assert.strictEqual(
       convertHandler.convert(1, 'kg'),
-      (1 / 0.453592).toFixed(5)
+      parseFloat((1 / 0.453592).toFixed(5))
     )
   })
 })
